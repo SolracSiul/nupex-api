@@ -122,6 +122,30 @@ class UserController{
             })
           }
     }
+    async deleteFileById(request: Request, response: Response){
+        try{
+            const fileId = request.params.id;
+
+            const file = await FileDetails.findById(fileId);
+
+            if(!file){
+                return response.status(404).json({
+                    error: "Arquivo nao encontrado"
+                });
+            }
+            await FileDetails.findByIdAndRemove(fileId);
+
+            return response.json({
+                message: "File removido com sucesso"
+            })
+
+        }catch (error){
+            return response.status(500).json({
+                error: "Something wrong",
+                message: error,
+            });
+        }
+    }
 
 }
 
