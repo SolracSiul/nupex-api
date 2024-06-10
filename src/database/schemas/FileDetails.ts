@@ -8,9 +8,7 @@ const PdfDetailsSchema = new mongoose.Schema({
         type: String,
     },
     //provavel erro aqui
-    fileName:{
-        type: String,
-    }
+    file:{}
    //dono do arquivo
    //role "admin tem" acesso de ver e comentar qualquer um arquivo desse
 });

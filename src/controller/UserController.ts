@@ -49,10 +49,10 @@ class UserController{
     
         const title = request.body.title;
         const comentario = request.body.comentario;
-        const fileName = request.file.filename;
+        const file = request.file.filename;
     
         try {
-            await FileDetails.create({ title: title, comentario: comentario, fileName: fileName });
+            await FileDetails.create({ title: title, comentario: comentario, file: file });
             return response.send({ status: "ok" }); // Adicione "return" aqui para evitar a execução posterior
         } catch (error) {
             return response.status(500).json({ status: error || 'Erro ao salvar detalhes do arquivo' });
