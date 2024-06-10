@@ -30,7 +30,7 @@ routes.get("/profile", authMiddleware,  UserController.getProfile);
 routes.post("/login", UserController.loginUser);
 routes.post("/send", upload.single("file"), UserController.sendFile);
 routes.get("/get-files", UserController.getMyOwnFiles);
-// routes.put('/user/:id', UserController.UpdateById);    
-// routes.get('/user/:id', UserController.SearchById); 
+routes.delete('/file/:id', UserController.deleteFileById);    
+routes.get('/file/:id', UserController.searchFileById); 
 
 export default routes;

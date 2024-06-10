@@ -146,6 +146,25 @@ class UserController{
             });
         }
     }
+    async searchFileById(request: Request, response: Response){
+        try{
+            const fileId = request.params.id;
+
+            const file = await FileDetails.findById(fileId);
+
+            if(!file){
+                return response.status(404).json({
+                    error: "File nao encontrado"
+                });
+            }
+            return response.json(file);
+        }catch (error){
+            return response.status(500).json({
+                error: "Something wrong",
+                message: error,
+            })
+        }
+    }
 
 }
 
